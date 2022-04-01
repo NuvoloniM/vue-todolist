@@ -23,14 +23,17 @@ var app = new Vue (
             //creo funzione per aggiungere in jobs l'imput messo
             addJob: function() {
                 //condizione esistenza
-                //per ogni elemento nell'array controllo se il message è gia stato inserito
-                this.jobs.forEach(element => {
+                if(this.jobs.length > '0'){
+                    //per ogni elemento nell'array controllo se il message è gia stato inserito
+                    this.jobs.forEach(element => {
                     //se si alert 'già inserita' e modifica variabile
                     if(this.toDo == element.message ){
                         alert('task già inserita');
                         return this.toDo = 'inserita';
                     }
                 });
+                }
+  
                 //se variabile inserita è vuota => alert campo vuoto 
                 if (this.toDo == ''){
                     alert('Attenzione! Il campo è vuoto')
@@ -47,6 +50,7 @@ var app = new Vue (
                     console.log(jobObj)
                     //pusho l'oggetto in jobs
                     this.jobs.push(jobObj);  
+                    this.toDo = '';
                 };
             },
             //creo funzione per eliminare la task
@@ -65,7 +69,7 @@ var app = new Vue (
                 console.log(element.done)
             },
             delAll: function() {
-                this.jobs = '';
+                this.jobs = [];
             }
         }   
     }
