@@ -15,16 +15,20 @@
         <div class="container py-5">
             <h1 class="text-center">To Do List</h1>
             <div class="d-flex align-items-center justify-content-center py-3">
-                <input type="text" placeholder=" Nuovo To Do" class="rounded-pill" v-model="toDo">
+                <input type="text" placeholder=" Nuovo To Do" class="rounded-pill" v-model="toDo" @keyup.enter="addJob">
                 <button class="btn btn-primary rounded-3 ms-3" @click="addJob">Aggiungi</button>
             </div>
             <div class="bg-light py-2 my-5 rounded-2">
                 <ul>
                     <li v-for="(job, index) in jobs" :key="index" class="d-flex justify-content-between align-items-center py-2 px-4 border-bottom">
-                        <div>{{ job.message }}</div>
+                        <div @click="complete(job)" :class="(job.done == 'True') ? 'done' : ''">{{ job.message }}</div>
                         <i class="fa-solid fa-xmark text-danger" @click="delJob( index )"></i>
                     </li>
                 </ul>
+                <div class="text-center">
+                    <button class="btn btn-danger" @click="delAll">Elimina Tutto</button>  
+                </div>
+                
             </div>
         </div>
     </div>

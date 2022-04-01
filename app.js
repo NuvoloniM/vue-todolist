@@ -35,7 +35,20 @@ var app = new Vue (
             //il parametro inserito nella funzione è l'index dell'oggetto nell'array preso da html
             delJob: function(jobPosition){
                 this.jobs.splice(jobPosition,1);
+            },
+            //creo funzione per barrare la task al click
+            complete: function(element){
+                //condizione per modificare .done
+                if (element.done == 'False') {
+                    element.done = 'True'
+                } else {
+                    element.done = 'False'
+                }
+                console.log(element.done)
+            },
+            delAll: function() {
+                this.jobs = '';
             }
-        }
+        }   
     }
 )
