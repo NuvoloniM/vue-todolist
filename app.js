@@ -5,15 +5,18 @@ var app = new Vue (
             jobs:[
                 {
                     message: 'Portare a passeggio il cane',
-                    done: 'False'
+                    done: 'False',
+                    important: 'False'
                 },
                 {
                     message: 'Buttare la Spazzatura',
-                    done: 'False'
+                    done: 'False',
+                    important: 'False'
                 },
                 {
                     message: 'Svuotare la lavastoviglie',
-                    done: 'False'
+                    done: 'False',
+                    important: 'False'
                 }
             ],
             //istanzio una variabile nuova che dipende dal v-model in input
@@ -70,6 +73,13 @@ var app = new Vue (
             },
             delAll: function() {
                 this.jobs = [];
+            },
+            setImportance: function(element){
+                if (element.important == 'False') {
+                    element.important = 'True'
+                } else {
+                    element.important = 'False'
+                }
             }
         }   
     }

@@ -6,3 +6,7 @@ i:hover {
     color: rgba(151, 249, 4, 0.833);
     text-decoration: line-through;
 }
+
+.importance {
+    border: 2px solid blue !important;
+}
