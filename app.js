@@ -17,19 +17,37 @@ var app = new Vue (
                 }
             ],
             //istanzio una variabile nuova che dipende dal v-model in input
-            toDo: ' ',
+            toDo: '',
         },
         methods: {
             //creo funzione per aggiungere in jobs l'imput messo
             addJob: function() {
-                //dato il messaggio nell'imput creo un oggetto da inserire nell'array in dati
-                let jobObj = {
-                    message: this.toDo,
-                    done: 'false'
-                }
-                console.log(jobObj);
-                //pusho l'oggetto in jobs
-                this.jobs.push(jobObj);
+                //condizione esistenza
+                //per ogni elemento nell'array controllo se il message è gia stato inserito
+                this.jobs.forEach(element => {
+                    //se si alert 'già inserita' e modifica variabile
+                    if(this.toDo == element.message ){
+                        alert('task già inserita');
+                        return this.toDo = 'inserita';
+                    }
+                });
+                //se variabile inserita è vuota => alert campo vuoto 
+                if (this.toDo == ''){
+                    alert('Attenzione! Il campo è vuoto')
+                    //se ho trovato gia la task inserita ho modificato la variabile => svuoto campo input
+                } else if( this.toDo == 'inserita'){
+                    return this.toDo = '';
+                    //se superato tutte le condizioni inserisco task
+                } else {
+                    //dato il messaggio nell'imput creo un oggetto da inserire nell'array in dati
+                    let jobObj = {
+                        message: this.toDo,
+                        done: 'false'
+                    }
+                    console.log(jobObj)
+                    //pusho l'oggetto in jobs
+                    this.jobs.push(jobObj);  
+                };
             },
             //creo funzione per eliminare la task
             //il parametro inserito nella funzione è l'index dell'oggetto nell'array preso da html
