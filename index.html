@@ -12,16 +12,16 @@
 <body>
 
     <div id="root">
-        <div class="container">
+        <div class="container py-5">
             <h1 class="text-center">To Do List</h1>
-            <div class="d-flex align-items-center justify-content-center">
-                <input type="text" placeholder=" Nuovo To Do" class="rounded-pill">
-                <button class="btn btn-primary rounded-3 ms-3">Aggiungi</button>
+            <div class="d-flex align-items-center justify-content-center py-3">
+                <input type="text" placeholder=" Nuovo To Do" class="rounded-pill" v-model="toDo">
+                <button class="btn btn-primary rounded-3 ms-3" @click="addJob">Aggiungi</button>
             </div>
-            <div class="bg-light">
+            <div class="bg-light py-2 my-5">
                 <ul>
-                    <li class="d-flex justify-content-between py-2 px-4 border-bottom">
-                        <div>to do prova</div>
+                    <li v-for="(job,index) in jobs" :key="index" class="d-flex justify-content-between py-2 px-4 border-bottom">
+                        <div>{{ job.message }}</div>
                         <div>x</div>
                     </li>
                 </ul>
